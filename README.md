@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Buat Kamu ❤️</title>
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.overlay{
+    background: rgba(0,0,0,0.55);
+    padding:30px;
+    border-radius:20px;
+    max-width:500px;
+    text-align:center;
+}
+
+#nama{
+    font-size:32px;
+    font-weight:bold;
+    min-height:40px;
+}
+
+.heart{
+    font-size:60px;
+    cursor:pointer;
+    margin:20px 0;
+    animation:pulse 1.5s infinite;
+}
+
+button{
+    background:#ff4d6d;
+    border:none;
+    padding:12px 22px;
+    font-size:16px;
+    color:white;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+#pesan{
+    margin-top:20px;
+    font-size:18px;
+    min-height:40px;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.2)}
+    100%{transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div id="nama"></div>
+    <p>Klik ❤️ kalau kamu kangen aku 🥺</p>
+
+    <div class="heart" onclick="klikLove()">❤️</div>
+
+    <button onclick="document.getElementById('lagu').play()">▶ Putar Lagu</button>
+
+    <div id="pesan"></div>
+</div>
+
+<audio id="lagu">
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Animasi nama */
+const namaText = "Hai Rin Ramadhani ❤️";
+let n = 0;
+
+function ketikNama(){
+    if(n < namaText.length){
+        document.getElementById("nama").innerHTML += namaText[n];
+        n++;
+        setTimeout(ketikNama, 120);
+    }
+}
+window.onload = ketikNama;
+
+/* Pesan bucin */
+const pesan = [
+    "Aku kangen kamu banget ❤️",
+    "Walau LDR, hatiku tetap kamu 💕",
+    "Doaku selalu buat kamu 🤍",
+    "Semoga cepat ketemu ya 🥺",
+    "Aku sayang kamu selamanya ❤️"
+];
+
+let i = 0;
+function klikLove(){
+    document.getElementById("pesan").innerText = pesan[i];
+    i = (i + 1) % pesan.length;
+}
+</script>
+
+</body>
+</html>
